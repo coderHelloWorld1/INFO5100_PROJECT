@@ -359,7 +359,7 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
 
     private void ManageEmployeeButton_SidePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManageEmployeeButton_SidePanelMouseClicked
         // TODO add your handling code here:
-       directoryLabel.setText("Manage Employees /");  
+       directoryLabel.setText("Manage Employees /"); 
         ManageEmployeeButton_SidePanel.setBackground(new Color(122,166,194));
         orderCancellationButton_SidePanel.setBackground(new Color(52, 104, 136));
         OrderAssignmentButton_SidePanel.setBackground(new Color(52, 104, 136));

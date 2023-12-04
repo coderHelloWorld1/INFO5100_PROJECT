@@ -402,6 +402,10 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
     private void ExportButton_SidePanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExportButton_SidePanel1MouseClicked
         // TODO add your handling code here:
         directoryLabel.setText("Exports /");
+        ExportData_View ed = new ExportData_View();
+        bottomPanel.add(ed);
+        CardLayout lay = (CardLayout)bottomPanel.getLayout();
+        lay.next(bottomPanel);
         ExportButton_SidePanel1.setBackground(new Color(122,166,194));
         OrderAssignmentButton_SidePanel.setBackground(new Color(52, 104, 136));
         orderCancellationButton_SidePanel.setBackground(new Color(52, 104, 136));

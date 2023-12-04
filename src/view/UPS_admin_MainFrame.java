@@ -388,6 +388,10 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
     private void OrderAssignmentButton_SidePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderAssignmentButton_SidePanelMouseClicked
         // TODO add your handling code here:
         directoryLabel.setText("Order Assignments /");
+        AssignOrderPanel aop = new AssignOrderPanel();
+        bottomPanel.add(aop);
+        CardLayout lay = (CardLayout)bottomPanel.getLayout();
+        lay.next(bottomPanel);
         OrderAssignmentButton_SidePanel.setBackground(new Color(122,166,194));
         orderCancellationButton_SidePanel.setBackground(new Color(52, 104, 136));
         ManageEmployeeButton_SidePanel.setBackground(new Color(52, 104, 136));  

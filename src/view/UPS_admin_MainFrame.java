@@ -416,6 +416,10 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
     private void LogOutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutButtonMouseClicked
         // TODO add your handling code here:
         directoryLabel.setText("Logout /");
+        LogoutPanel ed = new LogoutPanel(this);
+        bottomPanel.add(ed);
+        CardLayout lay = (CardLayout)bottomPanel.getLayout();
+        lay.next(bottomPanel);        
         ExportButton_SidePanel1.setBackground(new Color(52, 104, 136));
         OrderAssignmentButton_SidePanel.setBackground(new Color(52, 104, 136));
         orderCancellationButton_SidePanel.setBackground(new Color(52, 104, 136));

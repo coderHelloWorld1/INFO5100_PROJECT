@@ -1,0 +1,34 @@
+# Compiled bytecode
+*.class
+
+# Compiled Java source files
+*.jar
+
+# IDE-specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# NetBeans files
+nbproject/
+
+# Build output
+target/
+build/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# other files
+build.xml
+manifest.mf

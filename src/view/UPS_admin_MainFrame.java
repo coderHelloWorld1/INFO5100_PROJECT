@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 /**
  *
@@ -16,6 +17,11 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
      */
     public UPS_admin_MainFrame() {
         initComponents();
+        this.setTitle("UPS Managment Systems");
+        OrderCancellationRequestPanel orp = new OrderCancellationRequestPanel();
+        bottomPanel.add(orp);
+        CardLayout lay = (CardLayout)bottomPanel.getLayout();
+        lay.next(bottomPanel);
     }
 
     /**
@@ -364,7 +370,11 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
     private void orderCancellationButton_SidePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderCancellationButton_SidePanelMouseClicked
         // TODO add your handling code here:
        directoryLabel.setText("Order Cancellation Request /");
-        orderCancellationButton_SidePanel.setBackground(new Color(122,166,194));
+        OrderCancellationRequestPanel ocr = new OrderCancellationRequestPanel();
+        bottomPanel.add(ocr);
+        CardLayout lay = (CardLayout)bottomPanel.getLayout();
+        lay.next(bottomPanel);        
+       orderCancellationButton_SidePanel.setBackground(new Color(122,166,194));
         ManageEmployeeButton_SidePanel.setBackground(new Color(52, 104, 136)); 
         OrderAssignmentButton_SidePanel.setBackground(new Color(52, 104, 136));
         ExportButton_SidePanel1.setBackground(new Color(52, 104, 136));

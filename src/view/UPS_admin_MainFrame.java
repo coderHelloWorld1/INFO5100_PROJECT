@@ -19,7 +19,8 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
         initComponents();
         this.setTitle("UPS Managment Systems");
         OrderCancellationRequestPanel orp = new OrderCancellationRequestPanel();
-        bottomPanel.add(orp);
+        LoginPanel l = new LoginPanel(bottomPanel);
+        bottomPanel.add(l);
         CardLayout lay = (CardLayout)bottomPanel.getLayout();
         lay.next(bottomPanel);
     }

@@ -51,17 +51,20 @@ public class CustomerOrdersData {
         }
     
     
-    public static void NewUpdateRequest(CustomerOrders selectedorder, String newAddress) {
+    public static void NewUpdateRequest(CustomerOrders selectedorder, String newAddress, int loggedInID) {
     String oldAddress = selectedorder.getAddress();
     int ID = selectedorder.getOrderId();
-    String query = "INSERT INTO requests (TYPE,RequestbyID,ORDERID,RequestStatus,Comments) VALUES (?,?, ?, ?)";
+    String query = "INSERT INTO requests VALUES (?,?, ?,?,?, ?)";
     
     try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
         PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setInt(1, ID); 
-        stmt.setString(2,"address_update");// Set the ID as the first parameter
-        stmt.setString(3, oldAddress);      // Set the oldAddress as the second parameter
-        stmt.setString(4, newAddress);      // Set the newAddress as the third parameter
+        stmt.setString(1,"address");
+        stmt.setInt(2,loggedInID);
+        stmt.setInt(3, ID);
+        stmt.setString(4,"pending");// Set the ID as the first parameter
+        stmt.setString(5, newAddress); 
+        stmt.setString(6, "old address:"+oldAddress);      
+// Set the newAddress as the third parameter
         stmt.executeUpdate();
     } catch (SQLException e) {
         e.printStackTrace();

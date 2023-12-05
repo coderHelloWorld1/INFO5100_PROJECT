@@ -8,7 +8,7 @@ package model;
  *
  * @author admin
  */
-public class Order {
+public class Order_upsemp {
     int orderid;
     String orderstatus;
     int creatorid;

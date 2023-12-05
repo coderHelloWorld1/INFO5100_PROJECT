@@ -6,9 +6,10 @@ package model;
 
 /**
  *
- * @author varun
+ * @author Akash Bahri
  */
-public class CustomerManager {
+public class CustomerOrders {
+    
     private String prodName;
     private String creator_id;
     private int order_id;
@@ -86,7 +87,7 @@ public class CustomerManager {
     public void setComments(String comments){
         this.comments=comments;
     }
-    public String getRequestType(){
+     public String getRequestType(){
         return requestType;
     }
     public void setRequestType(String requestType){
@@ -99,4 +100,5 @@ public class CustomerManager {
     public void setReqOrderId(int id) {
         this.req_orderid = id;
     } 
+
 }

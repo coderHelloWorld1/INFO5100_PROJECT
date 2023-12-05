@@ -6,6 +6,7 @@ package view;
 
 import controller.CustomerOrdersData;
 import java.awt.CardLayout;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.CustomerOrders;
 
@@ -20,9 +21,10 @@ public class NewOrderForm extends javax.swing.JPanel {
      */
     int loggedInID =-1;
     JPanel botpanel;
-    
-    public NewOrderForm(JPanel botpanel, int loggedInID) {
+    JFrame loginframe;
+    public NewOrderForm(JPanel botpanel, int loggedInID, JFrame loginframe) {
         initComponents();     
+        this.loginframe = loginframe;
         this.botpanel=botpanel;
         this.loggedInID = loggedInID;
          CreatorIdText.setText(""+loggedInID);
@@ -185,7 +187,7 @@ public class NewOrderForm extends javax.swing.JPanel {
 
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
         // TODO add your handling code here:
-       CustomerEmployeePanel cust = new CustomerEmployeePanel(botpanel,loggedInID);
+       CustomerEmployeePanel cust = new CustomerEmployeePanel(botpanel,loggedInID,loginframe);
         botpanel.add(cust);
         CardLayout lay = (CardLayout)botpanel.getLayout();
         lay.next(botpanel);

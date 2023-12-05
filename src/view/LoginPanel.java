@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.CardLayout;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -19,9 +20,11 @@ public class LoginPanel extends javax.swing.JPanel {
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel(JPanel bottomPanel) {
+  JFrame loginframe;
+    public LoginPanel(JPanel bottomPanel, JFrame loginframe) {
         initComponents();
         this.bottomPanel = bottomPanel;
+        this.loginframe = loginframe;
     }
 
     /**
@@ -33,17 +36,12 @@ public class LoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Title_Label = new javax.swing.JLabel();
         UsernameTextField = new javax.swing.JTextField();
         PasswordTextField = new javax.swing.JTextField();
         LogInButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 76, 109));
         setMinimumSize(new java.awt.Dimension(943, 600));
-
-        Title_Label.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        Title_Label.setForeground(new java.awt.Color(255, 255, 255));
-        Title_Label.setText("UPS DELIVERY SERVICES ");
 
         UsernameTextField.setText("USERNAME");
         UsernameTextField.setToolTipText("Username");
@@ -97,31 +95,24 @@ public class LoginPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(268, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Title_Label)
-                        .addGap(214, 214, 214))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(PasswordTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(UsernameTextField)
-                            .addComponent(LogInButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(328, 328, 328))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(520, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PasswordTextField)
+                    .addComponent(UsernameTextField)
+                    .addComponent(LogInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(509, 509, 509))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(Title_Label)
-                .addGap(48, 48, 48)
+                .addGap(116, 116, 116)
                 .addComponent(UsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(PasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(LogInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(344, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
         );
 
         UsernameTextField.getAccessibleContext().setAccessibleName("");
@@ -165,33 +156,15 @@ public class LoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String role="associate";
         String company="";
-        switch(role){
-                case "admin" -> {if(company.equalsIgnoreCase("UPS")) {
-                //CREATE OBJECT FOR SPECIFIC PANEL
-                }
-                else if(company.equalsIgnoreCase("other")){
-                //CREATE OBJECT FOR SPECIFIC PANEL
-                }
-                else {UPS_admin_MainFrame n = new UPS_admin_MainFrame();
-        n.show();}}
-                case "associate" -> {
-                    {if(company.equalsIgnoreCase("UPS")) {
-                //CREATE OBJECT FOR SPECIFIC PANEL
-                }
-                else if(company.equalsIgnoreCase("other")){
-                //CREATE OBJECT FOR SPECIFIC PANEL
-                }
-                else{ OrderCancellationRequestPanel orp = new OrderCancellationRequestPanel();
-//        LoginPanel l = new LoginPanel(bottomPanel);
-        CustomerEmployeePanel emp = new CustomerEmployeePanel(bottomPanel,loggedInID);
-        bottomPanel.add(emp);
+        String user = UsernameTextField.getText();
+        if(user.equals("akash"))
+        {CustomerEmployeePanel emp = new CustomerEmployeePanel(bottomPanel,loggedInID,loginframe);
+         bottomPanel.add(emp);
         CardLayout lay = (CardLayout)bottomPanel.getLayout();
-        lay.next(bottomPanel);}}
-          }
-                default -> {
-                   
-        
-          }
+        lay.next(bottomPanel);}
+        else
+        {UPS_admin_MainFrame uam = new UPS_admin_MainFrame(loginframe);
+        uam.show();
         }
     }//GEN-LAST:event_LogInButtonActionPerformed
 
@@ -199,7 +172,6 @@ public class LoginPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LogInButton;
     private javax.swing.JTextField PasswordTextField;
-    private javax.swing.JLabel Title_Label;
     private javax.swing.JTextField UsernameTextField;
     // End of variables declaration//GEN-END:variables
 }

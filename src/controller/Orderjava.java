@@ -29,31 +29,31 @@ public class Orderjava {
      * @see User
      * @param user User object to be added
      */
-//   
+
 
     /**
-     * Return lost of all orders in database
-     * @see Order
-     * @return list of orders
+     * Return lost of all users in database
+     * @see User
+     * @return list of users
      */
     public static ArrayList<Order> getAllorders_upsemp() {
-//        return list of orders from db
+//        return list of users from db
         ArrayList<Order> orders = new ArrayList<>();
 
-        String query = "SELECT * FROM orderTable";
+        String query = "SELECT * FROM OrderTable";
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Order o = new Order();
-                o.setOrderid(rs.getInt("ORDERID"));
-                o.setCreatorid(rs.getInt("CREATORID"));
-                o.setProductname(rs.getString("PRODUCTNAME"));
-                o.setAddress(rs.getString("ADDRESS"));
-                o.setPlacedate(rs.getString("PLACEDATE"));
-                o.setAgentid(rs.getInt("AGENTID"));
-                o.setOrderstatus(rs.getString("STATUS"));
-                o.setNotes(rs.getString("NOTES"));
+                o.setOrderid(rs.getInt("OrderID"));
+                o.setCreatorid(rs.getInt("CreatorID"));
+                o.setProductname(rs.getString("ProductName"));
+                o.setAddress(rs.getString("Address"));
+                o.setPlacedate(rs.getString("PlacedDate"));
+                o.setAgentid(rs.getInt("AgentID"));
+                o.setOrderstatus(rs.getString("OrderStatus"));
+                o.setNotes(rs.getString("Notes"));
                 orders.add(o);
             }
             rs.close();
@@ -63,23 +63,46 @@ public class Orderjava {
 
         return orders;
    }
-
-    // Edit order status and notes
+    
      public static void editorder_upsemp(Order oldorder, Order neworder) {
-        String query = "UPDATE orderTable SET STATUS=?, NOTES=? WHERE ORDERID=?";
+        String query = "UPDATE OrderTable SET STATUS=?, NOTES=? WHERE ORDERID=?";
 
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             PreparedStatement stmt = conn.prepareStatement(query);
              stmt.setString(1, neworder.getOrderstatus());
              stmt.setString(2, neworder.getNotes());
              stmt.setInt(3, oldorder.getOrderid());
+//            stmt.setString(1, newUser.getName());
+//            stmt.setInt(2, newUser.getAge());
+//            stmt.setInt(3, oldUser.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Delete given user from database
+     * @see User
+     * @param u User to be deleted
+     * 
+     */
+//    public static void deleteUser(User u) {
+//        String query = "delete from User where id = ?";
+//
+//        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+//            PreparedStatement stmt = conn.prepareStatement(query);
+//            stmt.setInt(1, u.getId());
+//            stmt.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-
-
+    /**
+     * Edit given user details in the database
+     * @param oldUser existing user in database
+     * @param newUser modified user details to be added
+     */
+//   
 }

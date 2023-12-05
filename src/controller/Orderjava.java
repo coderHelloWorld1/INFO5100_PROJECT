@@ -29,37 +29,37 @@ public class Orderjava {
      * @see User
      * @param user User object to be added
      */
-    public static void addorder(Order order) {
-        //add to database
-        String query = "INSERT INTO Order(ORDERID,CREATORID,PRODUCTNAME,ADDRESS,PLACEDATE,AGENTID,STATUS,NOTES) VALUES(?,?,?,?,?,?,?,?)";
-        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1,order.getOrderid());
-            stmt.setInt(2, order.getCreatorid());
-            stmt.setString(3, order.getProductname());
-            stmt.setString(4, order.getAddress());
-            stmt.setString(5, order.getPlacedate());
-            stmt.setInt(6, order.getAgentid());
-            stmt.setString(7, order.getOrderstatus());
-            stmt.setString(8, order.getNotes());
-            int rows = stmt.executeUpdate();
-            System.out.println("Rows impacted : " + rows);
-//            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void addorder(Order order) {
+//        //add to database
+//        String query = "INSERT INTO Order(ORDERID,CREATORID,PRODUCTNAME,ADDRESS,PLACEDATE,AGENTID,STATUS,NOTES) VALUES(?,?,?,?,?,?,?,?)";
+//        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+//            PreparedStatement stmt = conn.prepareStatement(query);
+//            stmt.setInt(1,order.getOrderid());
+//            stmt.setInt(2, order.getCreatorid());
+//            stmt.setString(3, order.getProductname());
+//            stmt.setString(4, order.getAddress());
+//            stmt.setString(5, order.getPlacedate());
+//            stmt.setInt(6, order.getAgentid());
+//            stmt.setString(7, order.getOrderstatus());
+//            stmt.setString(8, order.getNotes());
+//            int rows = stmt.executeUpdate();
+//            System.out.println("Rows impacted : " + rows);
+////            conn.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * Return lost of all users in database
      * @see User
      * @return list of users
      */
-    public static ArrayList<Order> getAllorders() {
+    public static ArrayList<Order> getAllorders_upsemp() {
 //        return list of users from db
         ArrayList<Order> orders = new ArrayList<>();
 
-        String query = "SELECT * FROM Order";
+        String query = "SELECT * FROM orderTable";
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -83,19 +83,14 @@ public class Orderjava {
         return orders;
    }
     
-     public static void editorder(Order oldorder, Order neworder) {
-        String query = "UPDATE Order SET STATUS=? WHERE ORDERID=?";
+     public static void editorder_upsemp(Order oldorder, Order neworder) {
+        String query = "UPDATE orderTable SET STATUS=?, NOTES=? WHERE ORDERID=?";
 
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             PreparedStatement stmt = conn.prepareStatement(query);
-             stmt.setInt(1, oldorder.getOrderid());
-             stmt.setInt(2, oldorder.getCreatorid());
-             stmt.setString(3, oldorder.getProductname());
-             stmt.setString(4, oldorder.getAddress());
-             stmt.setString(5, oldorder.getPlacedate());
-             stmt.setInt(6, oldorder.getAgentid());
-             stmt.setString(7, neworder.getOrderstatus());
-             stmt.setString(8, oldorder.getNotes());
+             stmt.setString(1, neworder.getOrderstatus());
+             stmt.setString(2, neworder.getNotes());
+             stmt.setInt(3, oldorder.getOrderid());
 //            stmt.setString(1, newUser.getName());
 //            stmt.setInt(2, newUser.getAge());
 //            stmt.setInt(3, oldUser.getId());

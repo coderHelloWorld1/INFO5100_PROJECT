@@ -170,7 +170,7 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
         }
         selectedRequest = orderlist.get(selectedIndex);
         String newAddress = AddressTextField.getText();
-        CustomerOrdersData.NewUpdateRequest(selectedRequest,newAddress);
+        CustomerOrdersData.NewUpdateRequest(selectedRequest,newAddress,loggedInID);
         
 //        addressForUpdate=selectedRequest.getNewAddress();
 //        orderid=selectedRequest.getOrderId();

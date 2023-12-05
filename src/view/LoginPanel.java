@@ -156,24 +156,6 @@ public class LoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String role="associate";
         String company="";
-        switch(role){
-                case "admin" -> {if(company.equalsIgnoreCase("UPS")) {
-                //CREATE OBJECT FOR SPECIFIC PANEL
-                }
-                else if(company.equalsIgnoreCase("other")){
-                //CREATE OBJECT FOR SPECIFIC PANEL
-                }
-                else {UPS_admin_MainFrame n = new UPS_admin_MainFrame(loginframe);
-        n.show();}}
-                case "associate" -> {
-                    {if(company.equalsIgnoreCase("UPS")) {
-                //CREATE OBJECT FOR SPECIFIC PANEL
-                }
-                else if(company.equalsIgnoreCase("other")){
-                //CREATE OBJECT FOR SPECIFIC PANEL
-                }
-                else{ OrderCancellationRequestPanel orp = new OrderCancellationRequestPanel();
-//        LoginPanel l = new LoginPanel(bottomPanel);
         String user = UsernameTextField.getText();
         if(user.equals("akash"))
         {CustomerEmployeePanel emp = new CustomerEmployeePanel(bottomPanel,loggedInID,loginframe);
@@ -183,16 +165,6 @@ public class LoginPanel extends javax.swing.JPanel {
         else
         {UPS_admin_MainFrame uam = new UPS_admin_MainFrame(loginframe);
         uam.show();
-        
-        }
-       
-                }
-                    }
-          }
-                default -> {
-                   
-        
-          }
         }
     }//GEN-LAST:event_LogInButtonActionPerformed
 

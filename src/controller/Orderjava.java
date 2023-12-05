@@ -6,13 +6,13 @@ package controller;
 
 import java.sql.*;
 import java.util.ArrayList;
-import model.Order;
+import model.Order_upsemp;
 
 /**
  * Database Connector class for interacting with database
  * @author Nitya
  */
-public class Orderjava {
+public class Ordercontroller_upsemp {
 
     private static final String URL = "jdbc:mysql://localhost:3307/test_database?useSSL=false";
     private static final String USERNAME = "root";
@@ -21,7 +21,7 @@ public class Orderjava {
     /**
      * Privatized constructor so as to not allow object creation
      */
-    private Orderjava() {
+    private Ordercontroller_upsemp() {
     }
 
     /**
@@ -29,31 +29,50 @@ public class Orderjava {
      * @see User
      * @param user User object to be added
      */
-
+//    public static void addorder(Order_upsemp order) {
+//        //add to database
+//        String query = "INSERT INTO Order_upsemp(ORDERID,CREATORID,PRODUCTNAME,ADDRESS,PLACEDATE,AGENTID,STATUS,NOTES) VALUES(?,?,?,?,?,?,?,?)";
+//        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+//            PreparedStatement stmt = conn.prepareStatement(query);
+//            stmt.setInt(1,order.getOrderid());
+//            stmt.setInt(2, order.getCreatorid());
+//            stmt.setString(3, order.getProductname());
+//            stmt.setString(4, order.getAddress());
+//            stmt.setString(5, order.getPlacedate());
+//            stmt.setInt(6, order.getAgentid());
+//            stmt.setString(7, order.getOrderstatus());
+//            stmt.setString(8, order.getNotes());
+//            int rows = stmt.executeUpdate();
+//            System.out.println("Rows impacted : " + rows);
+////            conn.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * Return lost of all users in database
      * @see User
      * @return list of users
      */
-    public static ArrayList<Order> getAllorders_upsemp() {
+    public static ArrayList<Order_upsemp> getAllorders_upsemp() {
 //        return list of users from db
-        ArrayList<Order> orders = new ArrayList<>();
+        ArrayList<Order_upsemp> orders = new ArrayList<>();
 
-        String query = "SELECT * FROM OrderTable";
+        String query = "SELECT * FROM orderTable";
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Order o = new Order();
-                o.setOrderid(rs.getInt("OrderID"));
-                o.setCreatorid(rs.getInt("CreatorID"));
-                o.setProductname(rs.getString("ProductName"));
-                o.setAddress(rs.getString("Address"));
-                o.setPlacedate(rs.getString("PlacedDate"));
-                o.setAgentid(rs.getInt("AgentID"));
-                o.setOrderstatus(rs.getString("OrderStatus"));
-                o.setNotes(rs.getString("Notes"));
+                Order_upsemp o = new Order_upsemp();
+                o.setOrderid(rs.getInt("ORDERID"));
+                o.setCreatorid(rs.getInt("CREATORID"));
+                o.setProductname(rs.getString("PRODUCTNAME"));
+                o.setAddress(rs.getString("ADDRESS"));
+                o.setPlacedate(rs.getString("PLACEDATE"));
+                o.setAgentid(rs.getInt("AGENTID"));
+                o.setOrderstatus(rs.getString("STATUS"));
+                o.setNotes(rs.getString("NOTES"));
                 orders.add(o);
             }
             rs.close();
@@ -64,8 +83,8 @@ public class Orderjava {
         return orders;
    }
     
-     public static void editorder_upsemp(Order oldorder, Order neworder) {
-        String query = "UPDATE OrderTable SET STATUS=?, NOTES=? WHERE ORDERID=?";
+     public static void editorder_upsemp(Order_upsemp oldorder, Order_upsemp neworder) {
+        String query = "UPDATE orderTable SET STATUS=?, NOTES=? WHERE ORDERID=?";
 
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             PreparedStatement stmt = conn.prepareStatement(query);

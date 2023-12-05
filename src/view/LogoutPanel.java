@@ -90,6 +90,8 @@ public class LogoutPanel extends javax.swing.JPanel {
 
     private void assignButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignButtonMouseClicked
         // TODO add your handling code here:
+        LoginFrame lf = new LoginFrame();
+        lf.show();
         mainFrame.dispose();
     }//GEN-LAST:event_assignButtonMouseClicked
 

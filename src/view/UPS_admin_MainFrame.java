@@ -6,6 +6,7 @@ package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import javax.swing.JFrame;
 /**
  *
  * @author Purvam Sheth
@@ -15,13 +16,18 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form NEU_admin_MainFrame
      */
-    public UPS_admin_MainFrame() {
+    public UPS_admin_MainFrame(JFrame loginframe) {
         initComponents();
+        loginframe.dispose();
         this.setTitle("UPS Managment Systems");
         OrderCancellationRequestPanel orp = new OrderCancellationRequestPanel();
         bottomPanel.add(orp);
         CardLayout lay = (CardLayout)bottomPanel.getLayout();
         lay.next(bottomPanel);
+    }
+
+    private UPS_admin_MainFrame() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -444,13 +450,13 @@ public class UPS_admin_MainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NEU_admin_MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UPS_admin_MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NEU_admin_MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UPS_admin_MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NEU_admin_MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UPS_admin_MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NEU_admin_MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UPS_admin_MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

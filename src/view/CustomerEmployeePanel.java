@@ -7,6 +7,7 @@ package view;
 import controller.CustomerOrdersData;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -22,12 +23,14 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
      * Creates new form CustomerEmployeePanel
      */
     JPanel botpanel;
+    JFrame loginframe;
     CustomerOrders selectedRequest;
     private ArrayList <CustomerOrders> orderlist;
     int loggedInID = -1;
-    public CustomerEmployeePanel(JPanel botpanel, int loggedInID) {
+    public CustomerEmployeePanel(JPanel botpanel, int loggedInID, JFrame loginframe) {
         this.botpanel = botpanel;
         this.loggedInID = loggedInID;
+        this.loginframe = loginframe;
         populateTable();
         initComponents();
     }
@@ -69,7 +72,7 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
         UpdateButton = new javax.swing.JButton();
         AddressTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         Title_Label = new javax.swing.JLabel();
 
         NewOrderButton.setText("New Order");
@@ -101,12 +104,12 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
 
         jLabel1.setText("Update Address");
 
-        jButton1.setBackground(new java.awt.Color(51, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Logout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        logoutButton.setBackground(new java.awt.Color(51, 0, 0));
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -126,7 +129,7 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(NewOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
                         .addGap(93, 93, 93)
                         .addComponent(jLabel1)
@@ -153,7 +156,7 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(103, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -184,15 +187,19 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
 
     private void NewOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewOrderButtonActionPerformed
         // TODO add your handling code here:
-        NewOrderForm form =  new NewOrderForm(botpanel,loggedInID);
+        NewOrderForm form =  new NewOrderForm(botpanel,loggedInID,loginframe);
          botpanel.add(form);
         CardLayout lay = (CardLayout)botpanel.getLayout();
         lay.next(botpanel);
     }//GEN-LAST:event_NewOrderButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        LoginPanel lp = new LoginPanel(botpanel, loginframe);
+         botpanel.add(lp);
+        CardLayout lay = (CardLayout)botpanel.getLayout();
+        lay.next(botpanel);
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -200,8 +207,8 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
     private javax.swing.JButton NewOrderButton;
     private javax.swing.JLabel Title_Label;
     private javax.swing.JButton UpdateButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JScrollPane orderTable;
     private javax.swing.JTable order_table;
     // End of variables declaration//GEN-END:variables

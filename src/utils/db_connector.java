@@ -266,5 +266,47 @@ public class db_connector {
             e.printStackTrace();
         }        
     }
+     public static ArrayList<Order_upsemp> getAllorders_upsemp() {
+//        return list of users from db
+        ArrayList<Order_upsemp> orders = new ArrayList<>();
+
+        String query = "SELECT * FROM orderTable";
+        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Order_upsemp o = new Order_upsemp();
+                o.setOrderid(rs.getInt("ORDERID"));
+                o.setCreatorid(rs.getInt("CREATORID"));
+                o.setProductname(rs.getString("PRODUCTNAME"));
+                o.setAddress(rs.getString("ADDRESS"));
+                o.setPlacedate(rs.getString("PLACEDATE"));
+                o.setAgentid(rs.getInt("AGENTID"));
+                o.setOrderstatus(rs.getString("STATUS"));
+                o.setNotes(rs.getString("NOTES"));
+                orders.add(o);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orders;
+   }
+    
+     public static void editorder_upsemp(Order_upsemp oldorder, Order_upsemp neworder) {
+        String query = "UPDATE orderTable SET STATUS=?, NOTES=? WHERE ORDERID=?";
+
+        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+            PreparedStatement stmt = conn.prepareStatement(query);
+             stmt.setString(1, neworder.getOrderstatus());
+             stmt.setString(2, neworder.getNotes());
+             stmt.setInt(3, oldorder.getOrderid());
+             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     
 }

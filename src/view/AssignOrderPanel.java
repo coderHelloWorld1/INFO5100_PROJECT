@@ -227,8 +227,8 @@ public class AssignOrderPanel extends javax.swing.JPanel {
             for(AssignmentRequests u: ots){
                 Object[] row = new Object[5];
                 row[0] = u.getOID();
-                row[2] = u.getCompanyName();
-                row[1] = u.getAddress();
+                row[1] = u.getCompanyName();
+                row[2] = u.getAddress();
                 row[3] = u.getOrderStatus();
                 row[4] = u.getDate();
                 table.addRow(row);

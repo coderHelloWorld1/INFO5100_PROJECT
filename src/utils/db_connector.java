@@ -16,6 +16,7 @@ import model.AssignmentRequests;
 import model.CancelRequest;
 import model.EmpTable;
 import model.EmployeeLoadTable;
+import model.Order_upsemp;
 
 /**
  *
@@ -23,7 +24,7 @@ import model.EmployeeLoadTable;
  */
 public class db_connector {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/amazon?useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost:3307/amazon?useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     public static ArrayList<AssignmentRequests> getorders_data;

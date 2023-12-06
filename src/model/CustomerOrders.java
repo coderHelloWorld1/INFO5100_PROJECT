@@ -12,7 +12,7 @@ package model;
 public class CustomerOrders {
     
     private String prodName;
-    private String creator_id;
+    private int creator_id;
     private int order_id;
     private int req_orderid;
     private String address;
@@ -23,6 +23,7 @@ public class CustomerOrders {
     private String newAddress;
     private String comments;
     private String requestType;
+    private String requestStatus;
     public String getProdName() {
         return prodName;
     }
@@ -31,11 +32,11 @@ public class CustomerOrders {
         this.prodName = Name;
     }
 
-    public String getCreatorId() {
+    public int getCreatorId() {
         return creator_id;
     }
 
-    public void setCreatorId(String CreatorId) {
+    public void setCreatorId(int CreatorId) {
         this.creator_id = CreatorId;
     }
 
@@ -65,7 +66,7 @@ public class CustomerOrders {
         this.date=date;
     }
     public String getStatus(){
-        return address;
+        return status;
     }
     public void setStatus(String status){
         this.status=status;
@@ -76,7 +77,7 @@ public class CustomerOrders {
     public void setNotes(String notes){
         this.notes=notes;
     }
-    public String getNewAddress(){
+    /*public String getNewAddress(){
        return newAddress;
     }
     public void setNewAddress(String newAddress){
@@ -101,5 +102,11 @@ public class CustomerOrders {
     public void setReqOrderId(int id) {
         this.req_orderid = id;
     } 
+    public String getRequestStatus() {
+        return requestStatus;
+    }
 
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
+    }*/
 }

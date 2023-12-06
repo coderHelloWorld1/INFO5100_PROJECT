@@ -6,7 +6,11 @@ package view;
 
 import java.awt.CardLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.RequestsData;
+import controller.LoginDBC;
+import model.EmpTable;
 
 /**
  *
@@ -17,6 +21,8 @@ public class LoginPanel extends javax.swing.JPanel {
   int p=0;
   JPanel bottomPanel;
   int loggedInID=-5;
+  private LoginDBC logincreds;
+  String role="";
     /**
      * Creates new form LoginPanel
      */
@@ -116,6 +122,7 @@ public class LoginPanel extends javax.swing.JPanel {
         );
 
         UsernameTextField.getAccessibleContext().setAccessibleName("");
+        PasswordTextField.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
     private void UsernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameTextFieldActionPerformed
@@ -154,17 +161,46 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private void LogInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInButtonActionPerformed
         // TODO add your handling code here:
+        //RequestsData companyName=new RequestsData();
         String role="associate";
-        String company="";
+        String company="Amazon";
+        //companyName.setRequesterCompany(company);
         String user = UsernameTextField.getText();
-        if(user.equals("akash"))
-        {CustomerEmployeePanel emp = new CustomerEmployeePanel(bottomPanel,loggedInID,loginframe);
+       String password=PasswordTextField.getText();
+       /*EmpTable empDetails=new EmpTable();
+       LoginDBC.LoginDetails(empDetails,user, password, loggedInID);
+       if(user.equals(empDetails.getEmployeeName())&& password.equals(empDetails.getPassword())&& empDetails.getRole()=="manager"){
+          CustomerManagerPanel mgr=new CustomerManagerPanel(bottomPanel, loggedInID, loginframe);
+          bottomPanel.add(mgr);
+        CardLayout lay = (CardLayout)bottomPanel.getLayout();
+        lay.next(bottomPanel);
+       }*/
+       
+        if(user.equals("Akash") && password.equals("password1"))
+        {loggedInID=1;
+            CustomerEmployeePanel emp = new CustomerEmployeePanel(bottomPanel,loggedInID,loginframe);
          bottomPanel.add(emp);
         CardLayout lay = (CardLayout)bottomPanel.getLayout();
         lay.next(bottomPanel);}
-        else
-        {UPS_admin_MainFrame uam = new UPS_admin_MainFrame(loginframe);
+        else if(user.equals("Varun") && password.equals("password2")){
+            loggedInID=2;
+            CustomerManagerPanel mgr=new CustomerManagerPanel(bottomPanel, loggedInID, loginframe);
+            bottomPanel.add(mgr);
+            CardLayout lay=(CardLayout)bottomPanel.getLayout();
+            lay.next(bottomPanel);
+        }
+        else if(user.equals("Purvam")&& password.equals("password3"))
+        {loggedInID=3;
+            UPS_admin_MainFrame uam = new UPS_admin_MainFrame(loginframe);
         uam.show();
+        }
+        else if(user.equals("Nitya")&& password.equals("password4")){
+            loggedInID=4;
+            Ups_emp uemp=new Ups_emp(loginframe);
+            uemp.show();
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Incorrect username or password","Incorrect Credentials", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_LogInButtonActionPerformed
 

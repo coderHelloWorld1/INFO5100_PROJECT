@@ -51,7 +51,34 @@ public class EmpTable {
     public void setDataJoined(String DataJoined) {
         this.DataJoined = DataJoined;
     }
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     private int EID;
     private String EmployeeName;
     private String DataJoined;
+
+    public Boolean getIsLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setIsLoggedIn(Boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+    }
+    private Boolean isLoggedIn;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    private String role;
 }

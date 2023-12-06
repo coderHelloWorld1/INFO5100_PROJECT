@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Ordercontroller_upsemp {
 
-    private static final String URL = "jdbc:mysql://localhost:3307/test_database?useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost:3307/amazon?useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 

@@ -51,6 +51,15 @@ public class EmpTable {
     public void setDataJoined(String DataJoined) {
         this.DataJoined = DataJoined;
     }
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     private int EID;
     private String EmployeeName;
     private String DataJoined;

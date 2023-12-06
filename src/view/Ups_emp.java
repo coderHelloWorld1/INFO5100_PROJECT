@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ui;
+package view;
 
-import utils.db_connector.java;
+import java.awt.CardLayout;
+import utils.db_connector;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Order_upsemp;
@@ -19,9 +21,16 @@ public class Ups_emp extends javax.swing.JFrame {
     /**
      * Creates new form Ups_emp_2
      */
-    public Ups_emp() {
+     private Ups_emp() {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    public Ups_emp(JFrame loginframe) {
+        
         initComponents();
         populateTable();
+        loginframe.dispose();
+        this.setTitle("UPS Managment Systems");
+        OrderCancellationRequestPanel orp = new OrderCancellationRequestPanel();
     }
 
     /**

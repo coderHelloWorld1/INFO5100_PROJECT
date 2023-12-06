@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.CustomerOrders;
 
+
 /**
  *
  * @author Akash Bahri
@@ -28,18 +29,20 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
     private ArrayList <CustomerOrders> orderlist;
     int loggedInID = -1;
     public CustomerEmployeePanel(JPanel botpanel, int loggedInID, JFrame loginframe) {
+         
         this.botpanel = botpanel;
         this.loggedInID = loggedInID;
         this.loginframe = loginframe;
-        populateTable();
         initComponents();
+        populateTable();
+        
     }
     public void populateTable() {
         try {
             this.orderlist = CustomerOrdersData.getAllOrders();
             DefaultTableModel model = (DefaultTableModel) order_table.getModel();
             model.setRowCount(0);
-            for (CustomerOrders Order :orderlist ) {
+            for (CustomerOrders Order :orderlist) {
                Object[] row = new Object[9];
                 row[0] =Order.getOrderId();
                 row[1]=Order.getCreatorId();
@@ -169,7 +172,9 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
             return;
         }
         selectedRequest = orderlist.get(selectedIndex);
+        //selectedRequest.
         String newAddress = AddressTextField.getText();
+        
         CustomerOrdersData.NewUpdateRequest(selectedRequest,newAddress,loggedInID);
         
 //        addressForUpdate=selectedRequest.getNewAddress();

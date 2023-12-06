@@ -193,7 +193,7 @@ public class NewOrderForm extends javax.swing.JPanel {
         lay.next(botpanel);
         CustomerOrders neworder = new CustomerOrders();
         neworder.setOrderId(Integer.parseInt(OrderIdText.getText()));
-        neworder.setCreatorId(""+loggedInID);
+        neworder.setCreatorId(loggedInID);
         neworder.setProdName(ProductText.getText());
         neworder.setDate(DateText.getText());
         neworder.setAgentId(AgentText.getText());

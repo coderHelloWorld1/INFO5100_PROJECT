@@ -178,7 +178,8 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
         jLabel2.setBackground(new java.awt.Color(0, 255, 255));
         jLabel2.setText("Requests Table");
 
-        logOutButton.setBackground(new java.awt.Color(102, 0, 51));
+        logOutButton.setBackground(new java.awt.Color(153, 0, 0));
+        logOutButton.setForeground(new java.awt.Color(242, 242, 242));
         logOutButton.setText("Logout");
         logOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,6 +281,7 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
         selectedRequest = requestlist.get(selectedIndex);
         addressForUpdate=selectedRequest.getNewAddress();
         orderIdForUpdate=selectedRequest.getOrderId();
+        selectedRequest.setRequestStatus("Approved");
         //oldaddress=selectedRequest.;
         System.out.println(addressForUpdate);
         System.out.println(orderIdForUpdate);
@@ -297,6 +299,7 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
          orderUpdate.setOrderId(orderIdForUpdate);
          CustomerManagerDBC.updateAddress(orderUpdate);
          //CustomerManagerDBC.updateRequest(selectedRequest);
+         
         populateTable();
         populateRequestTable();
         //orderid

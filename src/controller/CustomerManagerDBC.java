@@ -93,7 +93,7 @@ public class CustomerManagerDBC {
                 //employee.setEID(rs.getInt("Requested_By_ID"));
                 request.setOrderId(rs.getInt("Order_ID"));
                 request.setRequestedById(rs.getInt("Requested_By_Id"));
-                request.setRequestStatus("RequestStatus");
+                request.setRequestStatus(rs.getString("RequestStatus"));
                 request.setNewAddress(rs.getString("NewAddress"));
                 request.setComments(rs.getString("CommentsOfRequestUser"));
                 request.setRequesterCompany(rs.getString("requester_company"));
@@ -166,7 +166,8 @@ public class CustomerManagerDBC {
            int ID=newOrderDetails.getOrderId();
           // String companyName=newRequestDetails.getRequesterCompany();
           String companyName="Amazon";
-           newRequestDetails.setComments("cancellation");
+           newRequestDetails.setRequestStatus("cancellation");
+           newRequestDetails.setComments("Placing a cancel request");
            newRequestDetails.setDateOfRequest("2023-12-06");
            System.out.println(ID);
            //int requestById=newRequestDetails.getRequestedById();
@@ -177,7 +178,7 @@ public class CustomerManagerDBC {
                      stmt.setString(1, type);
                      stmt.setInt(2, ID);
                      stmt.setInt(3, 9);
-                     stmt.setString(4, requestStatus);
+                     stmt.setString(4, newRequestDetails.getRequestStatus());
                      stmt.setString(5, newRequestDetails.getNewAddress());
                     
                      stmt.setString(6, newRequestDetails.getComments());

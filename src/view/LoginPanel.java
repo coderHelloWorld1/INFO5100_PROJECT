@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.RequestsData;
+import controller.LoginDBC;
+import model.EmpTable;
 
 /**
  *
@@ -19,6 +21,8 @@ public class LoginPanel extends javax.swing.JPanel {
   int p=0;
   JPanel bottomPanel;
   int loggedInID=-5;
+  private LoginDBC logincreds;
+  String role="";
     /**
      * Creates new form LoginPanel
      */
@@ -163,6 +167,15 @@ public class LoginPanel extends javax.swing.JPanel {
         //companyName.setRequesterCompany(company);
         String user = UsernameTextField.getText();
        String password=PasswordTextField.getText();
+       /*EmpTable empDetails=new EmpTable();
+       LoginDBC.LoginDetails(empDetails,user, password, loggedInID);
+       if(user.equals(empDetails.getEmployeeName())&& password.equals(empDetails.getPassword())&& empDetails.getRole()=="manager"){
+          CustomerManagerPanel mgr=new CustomerManagerPanel(bottomPanel, loggedInID, loginframe);
+          bottomPanel.add(mgr);
+        CardLayout lay = (CardLayout)bottomPanel.getLayout();
+        lay.next(bottomPanel);
+       }*/
+       
         if(user.equals("Akash") && password.equals("password1"))
         {loggedInID=1;
             CustomerEmployeePanel emp = new CustomerEmployeePanel(bottomPanel,loggedInID,loginframe);

@@ -63,4 +63,22 @@ public class EmpTable {
     private int EID;
     private String EmployeeName;
     private String DataJoined;
+
+    public Boolean getIsLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setIsLoggedIn(Boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+    }
+    private Boolean isLoggedIn;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    private String role;
 }

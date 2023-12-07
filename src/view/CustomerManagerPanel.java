@@ -309,7 +309,7 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
          orderUpdate.setOrderId(orderIdForUpdate);
          CustomerManagerDBC.updateAddress(orderUpdate);
          //CustomerManagerDBC.updateRequest(selectedRequest);
-         
+         CustomerManagerDBC.updateRequestStatus(selectedRequest);
         populateTable();
         populateRequestTable();
         //orderid

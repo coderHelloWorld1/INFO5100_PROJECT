@@ -161,6 +161,27 @@ public class CustomerManagerDBC {
                     e.printStackTrace();
         }
        }
+         public static void updateRequestStatus(RequestsData newRequestDetails) {
+             String requestStatus = "Approved";
+             //String newAddress=reqData.getNewAddress();
+             int id=newRequestDetails.getOrderId();
+             //System.out.println(address);
+             System.out.println(requestStatus);
+             System.out.println(id);
+            String query = "UPDATE RequestTable SET RequestStatus=? WHERE Order_ID=?";
+                try (Connection conn = DriverManager.getConnection(URL, USERNAME,PASSWORD)) {
+                    PreparedStatement stmt = conn.prepareStatement(query);
+                     stmt.setString(1, requestStatus);
+                     stmt.setInt(2,  id);
+                   // stmt.executeUpdate();
+                     int rowaffected=stmt.executeUpdate();
+                    System.out.println(rowaffected);
+                } catch (SQLException e) {
+                     System.out.println("rowaffected");
+                    e.printStackTrace();
+        }
+       }
+
          public static void updateRequestType(CustomerOrders newOrderDetails, RequestsData newRequestDetails) {
            String type=newRequestDetails.getRequestType();
            int ID=newOrderDetails.getOrderId();

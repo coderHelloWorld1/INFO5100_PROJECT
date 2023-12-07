@@ -73,6 +73,15 @@ public class db_connector {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
+        String query1 = "update RequestTable set RequestStatus='Approved' where Order_ID = ? ";
+        try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+            PreparedStatement stmt = conn.prepareStatement(query1);
+            stmt.setInt(1, rid);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     public static void deleteUser_upsmanager(int rid) {
@@ -271,7 +280,7 @@ public class db_connector {
 //        return list of users from db
         ArrayList<Order_upsemp> orders = new ArrayList<>();
 
-        String query = "SELECT * FROM orderTable";
+        String query = "SELECT * FROM OrderTable";
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -281,9 +290,9 @@ public class db_connector {
                 o.setCreatorid(rs.getInt("CREATORID"));
                 o.setProductname(rs.getString("PRODUCTNAME"));
                 o.setAddress(rs.getString("ADDRESS"));
-                o.setPlacedate(rs.getString("PLACEDATE"));
+                o.setPlacedate(rs.getString("PLACEDDATE"));
                 o.setAgentid(rs.getInt("AGENTID"));
-                o.setOrderstatus(rs.getString("STATUS"));
+                o.setOrderstatus(rs.getString("ORDERSTATUS"));
                 o.setNotes(rs.getString("NOTES"));
                 orders.add(o);
             }
@@ -296,7 +305,7 @@ public class db_connector {
    }
     
      public static void editorder_upsemp(Order_upsemp oldorder, Order_upsemp neworder) {
-        String query = "UPDATE orderTable SET STATUS=?, NOTES=? WHERE ORDERID=?";
+        String query = "UPDATE OrderTable SET ORDERSTATUS=?, NOTES=? WHERE ORDERID=?";
 
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -308,6 +317,6 @@ public class db_connector {
             e.printStackTrace();
         }
     }
+     
 
-    
 }

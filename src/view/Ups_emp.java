@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Order_upsemp;
+import utils.db_connector;
 
 /**
  *
@@ -239,7 +240,7 @@ public class Ups_emp extends javax.swing.JFrame {
             neworder.setNotes(notesTextfield.getText());
 
             //insert into db
-            Order_upsemp.editorder_upsemp(selectedorder, neworder);
+            utils.db_connector.editorder_upsemp(selectedorder, neworder);
             JOptionPane.showMessageDialog(null, "Order Edited Successfully", "Successful Edit", JOptionPane.PLAIN_MESSAGE);
             clearFields();
             populateTable();
@@ -255,7 +256,7 @@ public class Ups_emp extends javax.swing.JFrame {
 
      public void populateTable() {
         try {
-            this.orders = Order_upsemp.getAllorders_upsemp();
+            this.orders = utils.db_connector.getAllorders_upsemp();
             DefaultTableModel model = (DefaultTableModel) OrderTable.getModel();
             model.setRowCount(0);
             for (Order_upsemp o : orders) {

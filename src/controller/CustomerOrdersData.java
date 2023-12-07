@@ -78,7 +78,7 @@ public class CustomerOrdersData {
         public static void NewOrder(CustomerOrders Order) {
     
     String query = "INSERT INTO OrderTable VALUES (?,?,?,?,?,?,?,?)";
-     
+     String agentID=null;
     
     try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
         PreparedStatement stmt = conn.prepareStatement(query);
@@ -87,8 +87,8 @@ public class CustomerOrdersData {
         stmt.setString(3, Order.getProdName());      // Set the oldAddress as the second parameter
         stmt.setString(4, Order.getAddress());
         stmt.setString(5, Order.getDate()); 
-        stmt.setString(6,Order.getAgentId());// Set the ID as the first parameter
-        stmt.setString(7, Order.getStatus());      // Set the oldAddress as the second parameter
+        stmt.setString(6,   null);// Set the ID as the first parameter
+        stmt.setString(7, "pending_assignment");      // Set the oldAddress as the second parameter
         stmt.setString(8, Order.getNotes());
         // Set the newAddress as the third parameter
         stmt.executeUpdate();

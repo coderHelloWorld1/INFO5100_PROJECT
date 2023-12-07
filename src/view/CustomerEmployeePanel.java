@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.CustomerOrders;
 
@@ -28,6 +29,11 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
     CustomerOrders selectedRequest;
     private ArrayList <CustomerOrders> orderlist;
     int loggedInID = -1;
+    
+    public CustomerEmployeePanel(){
+        initComponents(); 
+        populateTable();
+    }
     public CustomerEmployeePanel(JPanel botpanel, int loggedInID, JFrame loginframe) {
          
         this.botpanel = botpanel;
@@ -196,6 +202,7 @@ public class CustomerEmployeePanel extends javax.swing.JPanel {
          botpanel.add(form);
         CardLayout lay = (CardLayout)botpanel.getLayout();
         lay.next(botpanel);
+        populateTable();
     }//GEN-LAST:event_NewOrderButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

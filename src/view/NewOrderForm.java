@@ -6,16 +6,23 @@ package view;
 
 import controller.CustomerOrdersData;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.CustomerOrders;
+
+
+
 
 /**
  *
  * @author Akash Bahri
  */
 public class NewOrderForm extends javax.swing.JPanel {
-
+CustomerOrders selectedRequest;
+    private ArrayList <CustomerOrders> orderlist;
     /**
      * Creates new form NewOrderForm
      */
@@ -29,6 +36,9 @@ public class NewOrderForm extends javax.swing.JPanel {
         this.loggedInID = loggedInID;
          CreatorIdText.setText(""+loggedInID);
         CreatorIdText.setEditable(false);
+        StatusText.setText("pending_assignment");
+        StatusText.setEditable(false);
+        
         AgentText.setText("Not Assigned yet");
         
     }
@@ -201,10 +211,10 @@ public class NewOrderForm extends javax.swing.JPanel {
         neworder.setNotes(NotesText.getText());
         neworder.setAddress(AddressText.getText());
         CustomerOrdersData.NewOrder(neworder);
-        
-        
+        cust.populateTable(); 
     }//GEN-LAST:event_SubmitButtonActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddressText;

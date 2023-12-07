@@ -90,6 +90,7 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         logOutButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         requestTableButton.setBackground(new java.awt.Color(0, 76, 109));
         requestTableButton.setForeground(new java.awt.Color(0, 79, 106));
@@ -187,6 +188,10 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Customer Manager View");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,13 +219,18 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
                             .addComponent(ExportData, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(407, 407, 407)
+                        .addComponent(jLabel3)))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel3)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -239,7 +249,7 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
                         .addComponent(ExportData, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(117, 117, 117)
                 .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -427,6 +437,7 @@ public class CustomerManagerPanel extends javax.swing.JPanel {
     private javax.swing.JButton ExportData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton logOutButton;
     private javax.swing.JScrollPane orderTable;
     private javax.swing.JButton orderTableButton;
